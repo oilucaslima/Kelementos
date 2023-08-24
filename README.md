@@ -30,14 +30,14 @@ Esse algoritmo tem como objetivo percorrer vários arquivos .txt, ler cada linha
  <li>(4): Ao fim do algoritmo disponibilizar a heap com os K elementos que mais apareceram.</li>
 </ul>
 
-- TEM QUE DEFINIR OS VALORES K (quantos elementos para o rank) E ALL (quantos arquivos serão lidos) DENTRO DO functions.hpp
+- TEM QUE DEFINIR OS VALORES K (quantos elementos para o rank) E ALL (quantos arquivos serão lidos) DENTRO DO functions.cpp
 
 ## Arquivo de Entrada
 
 <p align="justify">
  <ul>
     <li>1 - Todos os arquivos devem ter o mesmo formato (.txt);</li>
-    <li>2 - Todos devem ser nomeados com o nome 'input0', em caso de mais de uma arquivo adicionar números em ordem crescente começando do 1 apos a palavra 'input', exempo : input1.txt ;</li>
+    <li>2 - O primeiro arquivo de entrada teve ser nomeado com o nome 'input0.txt', em caso de mais de uma arquivo adicionar números em ordem crescente começando do 1 apos a palavra 'input', exempo : input1.txt, input2.txt ;</li>
     <li>3 - O arquivo de stop word deve ser único, e nomeado como o exemplo: stopWord.txt;</li>
     <li>4 - o arquivo de stop word deve ter a seguinte formatação: uma palavra por linha e não pode conter expressões;</li>
  </ul>
@@ -54,7 +54,6 @@ Todos os arquivos de entrada devem ser colocados nesta pasta, de acordo com as e
 
 ### Pasta src
 
-* `input.data`: arquivo onde as matrizes que serão processadas estão salvas;
 * `main.cpp`: O arquivo é responsável por criar um mapa não ordenado (unordered_map) para receber todas as stop words que serão recebidas através de uma função, criar um map para receber todas as palavras diferentes de stop word através de uma função e chamar outra função que será responsável por retornar os K elementos mais comuns;
 * `functions.cpp`: arquivo que se encontram as todas as funções do algortimo;
 * `library.hpp`: arquivo que contém os cabeçalhos das bibliotecas que serão usadas em todo o algoritmo;
@@ -93,7 +92,12 @@ O algoritmo começa criando uma Hash do tipo [map](#map) que vai conter todas as
   <img height="100" width="400" src="img/map.png" >
 </p>
 
-Onde key é o tipo da chave, T o tipo do dado, o compare é uma função que compara as chaves em ordem crescente. Isso significa que a função de comparação `less<Key>` retorna true se a primeira chave for menor que a segunda chave, false se a primeira chave for maior ou igual à segunda chave, e throw se as chaves não forem comparáveis.
+Onde key é o tipo da chave, T o tipo do dado, o compare é uma função que compara as chaves em ordem crescente. Isso significa que a função de comparação `less<Key>` retorna true se a primeira chave for menor que a segunda chave, false se a primeira chave for maior ou igual à segunda chave, e throw se as chaves não forem comparáveis.Veja abaixo os custos computacionais de cada modalidade:
+
+- Inserção: O(log n)
+- Pesquisa: O(log n)
+- Remoção: O(log n)
+- Iteração: O(n)
 
 </div>
 
@@ -111,7 +115,12 @@ Onde key é o tipo da chave, T o tipo do dado, o compare é uma função que com
 
 Onde key é o tipo da chave, T o tipo do dado, hash é a função que é usada para calcular o hash das chaves. A função de hash é usada para converter uma chave em um valor inteiro, chamado código hash. O código hash é então usado para armazenar a chave em uma tabela hash. As tabelas hash são uma estrutura de dados que permitem o acesso rápido a elementos, pois os elementos são armazenados em buckets com base em seus códigos hash. KeyEqual é a função de igualdade de chaves que é usada para comparar as chaves e o Allocato para alocar memória pro mapa.
 
-Informação extra: você pode declarar sua própria função hash da seguinte maneira: `unordered_map<int, string, my_hash> my_map;` onde my_hash é a sua função.
+Informação extra: você pode declarar sua própria função hash da seguinte maneira: `unordered_map<int, string, my_hash> my_map;` onde my_hash é a sua função. Veja abaixo o custo computacional de algumas modolidades:
+
+- Inserção: O(1)
+- Pesquisa: O(1)
+- Remoção: O(1)
+- Iteração: O(n)
 
 </div>
 
@@ -169,7 +178,7 @@ Essa função faz parte da biblioteca algorithm, ela basicamente analisa de iní
 
 <div  align="justify">
 
-Ele é um algoritmo usado no heapsort, onde usa o conceito de pai e filho. Ele começa da metade do vetor e vai decrescendo conforme as interações. A posição i é chamada de pai, as posições (i\*2+1) de filho esquerdo e (i*2+2) de filho direito. Enquanto na interação o filho esquerdo for menor ou igual ao do tamanho final do vetor (K), ele vai analisar se o filho à esquerda é maior que o da direita. Caso sim, pega-se a posição do filho direito e compara com o pai. Caso o pai seja maior, troca-se os dois de posição, e agora passa analisar a partir da posição do filho atual até não ter mais filhos para comparar. Esse processo vai acontecer até o for chegar à posição zero do vetor. Ao final da execução, os valores não estarão ordenados, mas na primeira posição do vetor sempre vai estar o dado de menor valor (ocorrências).
+Ele é um algoritmo usado no heapsort, onde usa o conceito de pai e filho. Ele começa da metade do vetor e vai decrescendo conforme as interações. A posição i é chamada de pai, as posições (i\*2+1) de filho esquerdo e (i*2+2) de filho direito. Enquanto na interação o filho esquerdo for menor ou igual ao do tamanho final do vetor (K), ele vai analisar se o filho à esquerda é maior que o da direita. Caso sim, pega-se a posição do filho direito e compara com o pai. Caso o pai seja maior, troca-se os dois de posição, e agora passa analisar a partir da posição do filho atual até não ter mais filhos para comparar. Esse processo vai acontecer até o for chegar à posição zero do vetor. Ao final da execução, os valores não estarão ordenados, mas na primeira posição do vetor sempre vai estar o dado de menor valor (ocorrências). O custo do heapify é de log(n), mas no caso desse algoritmo seria log(K). 
 
 - Vetor de 6 posições, como é par não começa no meio certinho.
 
@@ -180,7 +189,7 @@ Ele é um algoritmo usado no heapsort, onde usa o conceito de pai e filho. Ele c
 - Pai e filhos.
 
 <p align="center">
-   <img height="200" width="250" src="img/2.png" >
+   <img height="250" width="250" src="img/2.png" >
 </p>
 
 - Exemplo de uma verificação completa:
