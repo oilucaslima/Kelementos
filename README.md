@@ -95,6 +95,13 @@ O algoritmo começa criando uma Hash do tipo [map](#map) que vai conter todas as
 
 Onde key é o tipo da chave, T o tipo do dado, o compare é uma função que compara as chaves em ordem crescente. Isso significa que a função de comparação `less<Key>` retorna true se a primeira chave for menor que a segunda chave, false se a primeira chave for maior ou igual à segunda chave, e throw se as chaves não forem comparáveis.
 
+- Custos:
+  
+Inserção: O(log n)
+Pesquisa: O(log n)
+Remoção: O(log n)
+Iteração: O(n)
+
 </div>
 
 
