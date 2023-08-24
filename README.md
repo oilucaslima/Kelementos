@@ -99,6 +99,13 @@ Onde key é o tipo da chave, T o tipo do dado, o compare é uma função que com
 - Remoção: O(log n)
 - Iteração: O(n)
 
+- Custos:
+  
+Inserção: O(log n)
+Pesquisa: O(log n)
+Remoção: O(log n)
+Iteração: O(n)
+
 </div>
 
 
